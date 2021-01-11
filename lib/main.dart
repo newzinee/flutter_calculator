@@ -30,8 +30,21 @@ class _StandardModeState extends State<StandardMode> {
     });
   }
 
-  void _inputNumber(num input) {
-    _inputText(input.toString());
+  void _inputNumber(num _input) {
+    if (_showText == '') {
+      _result = _input;
+    } else if (_showText.endsWith('+')) {
+      _result = _result + _input;
+    } else if (_showText.endsWith('-')) {
+      _result = _result - _input;
+    } else if (_showText.endsWith('%')) {
+      _result = _result % _input;
+    } else if (_showText.endsWith('/')) {
+      _result = _result / _input;
+    } else if (_showText.endsWith('x')) {
+      _result = _result * _input;
+    }
+    _inputText(_input.toString());
   }
 
   void _inputRoles(String symbol) {
